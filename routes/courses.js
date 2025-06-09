@@ -5,6 +5,7 @@ const courses = [
   {
     id: 1,
     name: "Analogue Electronics",
+    type:"course"
     price: 120.99,
     duration: "15 weeks",
     stack: "master everything on analogue electronics ",
@@ -12,6 +13,7 @@ const courses = [
   {
     id: 2,
     name: "Digital Electronics",
+    type:"course"
     price: 500.0,
     duration: "12 weeks",
     stack: "master everything on digital electronics ",
@@ -19,6 +21,7 @@ const courses = [
   {
     id: 3,
     name: "Micro Controller",
+    type:"course"
     price: 1000.0,
     duration: "20 weeks",
     stack: "master everything on Micro controllers ",
@@ -26,6 +29,7 @@ const courses = [
   {
     id: 4,
     name: "Computer Engineering",
+    type:"course"
     price: 2000.0,
     duration: "27 weeks",
     stack: "master everything on computer engineering ",
@@ -33,6 +37,7 @@ const courses = [
   {
     id: 5,
     name: "AutoCad",
+    type:"course"
     price: 2500.99,
     duration: "13 weeks",
     stack: "master everything on autocad ",
@@ -40,6 +45,7 @@ const courses = [
   {
     id: 6,
     name: "Corel Draw",
+    type:"course"
     price: 500.57,
     duration: "10 weeks",
     stack: "master everything on Corel Draw ",
@@ -47,6 +53,7 @@ const courses = [
   {
     id: 7,
     name: "3ds Max",
+    type:"course"
     price: 999.99,
     duration: "12 weeks",
     stack: "master everything on 3ds Max ",
@@ -54,6 +61,7 @@ const courses = [
   {
     id: 8,
     name: "Photoshop",
+    type:"course"
     price: 2000.0,
     duration: "17 weeks",
     stack: "master everything on Photoshop ",
@@ -61,6 +69,7 @@ const courses = [
   {
     id: 9,
     name: "Power Automation",
+    type:"course"
     price: 1500.0,
     duration: "20 weeks",
     stack: "master everything on Power Automation ",
@@ -68,6 +77,7 @@ const courses = [
   {
     id: 10,
     name: "House wiring",
+    type:"course"
     price: 999.99,
     duration: "22 weeks",
     stack: "master everything on House wiring ",
@@ -75,6 +85,7 @@ const courses = [
   {
     id: 11,
     name: "CCTV",
+    type:"course"
     price: 2500.0,
     duration: "15 weeks",
     stack: "master everything on CCTV ",
@@ -82,6 +93,7 @@ const courses = [
   {
     id: 12,
     name: "Solar Engineering",
+    type:"course"
     price: 6000.0,
     duration: "17 weeks",
     stack: "Inverters, panels, battries, charge controllers ",
@@ -89,6 +101,7 @@ const courses = [
   {
     id: 13,
     name: "Office Applications",
+    type:"course"
     price: 800.0,
     duration: "16 weeks",
     stack: "MS word, MS excel, MS publisher ",
@@ -96,6 +109,7 @@ const courses = [
   {
     id: 14,
     name: "Android App Dev",
+    type:"course"
     price: 6000.0,
     duration: "25 weeks",
     stack: "java, Kotlin, MIT Blocks ",
@@ -103,6 +117,7 @@ const courses = [
   {
     id: 15,
     name: "Front-End Web Dev",
+    type:"course"
     price: 1000.0,
     duration: "12 weeks",
     stack: "Master HTML, CSS, JavaScript, React",
@@ -110,6 +125,7 @@ const courses = [
   {
     id: 16,
     name: "C Lanuguage",
+    type:"course"
     price: 4000.0,
     duration: "20 weeks",
     stack: "C, C#, C++ ",

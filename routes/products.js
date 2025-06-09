@@ -5,6 +5,7 @@ const products = [
   {
     id: 1,
     name: "Product One",
+    type:"product"
     quantity: 1,
     price: 5000,
     description: "Lorem ipsum dolor sit amet consectetur  ",
@@ -12,6 +13,7 @@ const products = [
   {
     id: 2,
     name: "Product Two",
+    type:"product"
     quantity: 1,
     price: 1000,
     description: "Lorem ipsum dolor sit amet consectetur   ",
@@ -19,6 +21,7 @@ const products = [
   {
     id: 3,
     name: "Product Three",
+    type:"product"
     quantity: 1,
     price: 1500,
     description: "Lorem ipsum dolor sit amet consectetur   ",
@@ -26,6 +29,7 @@ const products = [
   {
     id: 4,
     name: "Product Four",
+    type:"product"
     quantity: 1,
     price: 500,
     description: "Lorem ipsum dolor sit amet consectetur   ",
@@ -33,6 +37,7 @@ const products = [
   {
     id: 5,
     name: "Product Five",
+    type:"product"
     quantity: 1,
     price: 520,
     description:
@@ -41,6 +46,7 @@ const products = [
   {
     id: 6,
     name: "Product Six",
+    type:"product"
     quantity: 1,
     price: 120,
     description:
@@ -49,6 +55,7 @@ const products = [
   {
     id: 7,
     name: "Product Seven",
+    type:"product"
     quantity: 1,
     price: 8900,
     description:
@@ -57,6 +64,7 @@ const products = [
   {
     id: 8,
     name: "Product Eight",
+    type:"product"
     quantity: 1,
     price: 450,
     description:
@@ -65,6 +73,7 @@ const products = [
   {
     id: 9,
     name: "Product Nine",
+    type:"product"
     quantity: 1,
     price: 45,
     description:
@@ -73,6 +82,7 @@ const products = [
   {
     id: 10,
     name: "Product Ten",
+    type:"product"
     quantity: 1,
     price: 999,
     description:
