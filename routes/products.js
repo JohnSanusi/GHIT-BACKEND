@@ -64,7 +64,6 @@ const products = [
   {
     id: 8,
     name: "Product Eight",
-    type:"product"
     quantity: 1,
     price: 450,
     description:
