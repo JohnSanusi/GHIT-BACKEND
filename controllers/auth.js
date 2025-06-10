@@ -25,13 +25,18 @@ export const signup = async (req, res, next) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const newUsers = await User.create([
-      { name, email, password: hashedPassword },
-      { session },
-    ]);
+    const newUser = await User.create({
+      name,
+      email,
+      password: hashedPassword,
+    });
 
-    const token = sign({ userId: newUsers[0]._id }, JWT_SECRET, {
-      expiresIn: JWT_EXPIRES_IN,
+    await newUser.save({ session });
+
+    console.log("created user", newUser);
+
+    const token = sign({ userId: newUser._id }, JWT_SECRET, {
+      expiresIn: 86400,
     });
     await session.commitTransaction();
     session.endSession();
@@ -41,7 +46,7 @@ export const signup = async (req, res, next) => {
       message: "User created",
       data: {
         token,
-        user: newUsers[0],
+        user: newUser,
       },
     });
   } catch (error) {
@@ -50,5 +55,36 @@ export const signup = async (req, res, next) => {
     next(error);
   }
 };
-export const login = async (req, res, next) => {};
+export const login = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) {
+      const error = new Error("User not found");
+      error.statusCode = 404;
+      throw error;
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordValid) {
+      const error = new Error("invalid password");
+      error.statusCode = 404;
+      throw error;
+    }
+
+    const token = sign({ userId: user._id }, JWT_SECRET, { expiresIn: 86400 });
+
+    res.status(200).json({
+      success: true,
+      message: "user logged in successfully",
+      data: {
+        token,
+        user,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 export const logout = async (req, res, next) => {};
