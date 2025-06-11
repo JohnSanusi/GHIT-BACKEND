@@ -14,13 +14,15 @@ const transporter = nodemailer.createTransport({
 
 router.post("/", upload.single("receipt"), async (req, res) => {
   try {
-    const { name, email } = req.body;
+    const { name, email, location } = req.body;
 
     const mailOptions = {
       from: `"GHIT Payment Bot <${GMAIL_USER}>"`,
       to: ADMIN_RECEIVER,
       subject: "New Payment Submission",
-      text: `Name: ${name}\nEmail: ${email}`,
+      text: `Name: ${name}\nEmail: ${email}\nLocation: ${
+        location || "Not provided"
+      }`,
       attachments: [
         {
           filename: req.file.originalname,
