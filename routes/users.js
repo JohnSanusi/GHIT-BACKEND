@@ -3,8 +3,8 @@ import { getUser, getUsers } from "../controllers/users.js";
 
 const router = Router();
 
-router.get("/", (req, res) => getUsers);
-router.get("/:id", (req, res) => getUser);
+router.get("/", getUsers);
+router.get("/:id", getUser);
 router.post("/:id", (req, res) => {
   res.send({ message: "CREATE new user" });
 });

@@ -2,8 +2,15 @@ import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/users.js";
-import { JWT_EXPIRES_IN, JWT_SECRET } from "../config/env.js";
+import { JWT_EXPIRES_IN, JWT_SECRET, NODE_ENV } from "../config/env.js";
 const { sign, verify } = jwt;
+
+const cookieOptions = {
+  httpOnly: true,
+  secure: NODE_ENV === "production",
+  sameSite: (NODE_ENV = "production" ? "strict" : "lax"),
+  maxAge: 24 * 60 * 60 * 1000,
+};
 
 export const signup = async (req, res, next) => {
   const session = await mongoose.startSession();
@@ -41,14 +48,16 @@ export const signup = async (req, res, next) => {
     await session.commitTransaction();
     session.endSession();
 
-    res.status(201).json({
-      success: true,
-      message: "User created",
-      data: {
-        token,
-        user: newUser,
-      },
-    });
+    res
+      .status(201)
+      .cookie("token", token, cookieOptions)
+      .json({
+        success: true,
+        message: "User created",
+        data: {
+          user: newUser,
+        },
+      });
   } catch (error) {
     await session.abortTransaction();
     session.endSession();
@@ -75,11 +84,10 @@ export const login = async (req, res, next) => {
 
     const token = sign({ userId: user._id }, JWT_SECRET, { expiresIn: 86400 });
 
-    res.status(200).json({
+    res.status(200).cookie("token", token, cookieOptions).json({
       success: true,
       message: "user logged in successfully",
       data: {
-        token,
         user,
       },
     });
@@ -87,4 +95,17 @@ export const login = async (req, res, next) => {
     next(error);
   }
 };
-export const logout = async (req, res, next) => {};
+export const logout = async (req, res, next) => {
+  try {
+    res
+      .clearCookie("token", {
+        httpOnly: true,
+        secure: NODE_ENV === "production",
+        sameSite: (NODE_ENV = "production" ? "strict" : "lax"),
+      })
+      .status(200)
+      .json({ success: true, message: "logged out successfully" });
+  } catch (error) {
+    next(error);
+  }
+};
