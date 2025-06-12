@@ -5,7 +5,10 @@ import { GMAIL_USER, GMAIL_PASSWORD, ADMIN_RECEIVER } from "../config/env.js";
 
 const router = express.Router();
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+
   auth: {
     user: GMAIL_USER,
     pass: GMAIL_PASSWORD,
