@@ -20,7 +20,7 @@ router.post("/", upload.single("receipt"), async (req, res) => {
     const { name, email, location } = req.body;
     const file = req.file;
     const mailOptions = {
-      from: `"GHIT Payment Bot <${BREVO_USER}>"`,
+      from: `"GHIT Payment Bot" <sanusijohn0@gmail.com>`,
       to: ADMIN_RECEIVER,
       subject: "New Payment Submission",
       text: `Name: ${name}\nEmail: ${email}\nLocation: ${
