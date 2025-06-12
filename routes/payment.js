@@ -25,8 +25,8 @@ router.post("/", upload.single("receipt"), async (req, res) => {
       }`,
       attachments: [
         {
-          filename: req.file.originalname,
-          path: req.file.path,
+          filename: file.originalname,
+          path: file.path,
         },
       ],
     };
