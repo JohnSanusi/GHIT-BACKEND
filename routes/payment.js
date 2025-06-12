@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
 router.post("/", upload.single("receipt"), async (req, res) => {
   try {
     const { name, email, location } = req.body;
-
+    const file = req.file;
     const mailOptions = {
       from: `"GHIT Payment Bot <${GMAIL_USER}>"`,
       to: ADMIN_RECEIVER,
