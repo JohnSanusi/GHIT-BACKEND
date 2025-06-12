@@ -1,17 +1,17 @@
 import express from "express";
 import upload from "../middleware/uploads.js";
 import nodemailer from "nodemailer";
-import { GMAIL_USER, GMAIL_PASSWORD, ADMIN_RECEIVER } from "../config/env.js";
+import { BREVO_USER, BREVO_PASSWORD, ADMIN_RECEIVER } from "../config/env.js";
 
 const router = express.Router();
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
+  host: "smtp-relay.brevo.com",
+  port: 587,
   secure: true,
 
   auth: {
-    user: GMAIL_USER,
-    pass: GMAIL_PASSWORD,
+    user: BREVO_USER,
+    pass: BREVO_PASSWORD,
   },
 });
 
@@ -20,7 +20,7 @@ router.post("/", upload.single("receipt"), async (req, res) => {
     const { name, email, location } = req.body;
     const file = req.file;
     const mailOptions = {
-      from: `"GHIT Payment Bot <${GMAIL_USER}>"`,
+      from: `"GHIT Payment Bot <${BREVO_USER}>"`,
       to: ADMIN_RECEIVER,
       subject: "New Payment Submission",
       text: `Name: ${name}\nEmail: ${email}\nLocation: ${

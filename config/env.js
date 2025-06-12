@@ -8,7 +8,7 @@ export const {
   DB_URI,
   JWT_SECRET,
   JWT_EXPIRES_IN,
-  GMAIL_USER,
-  GMAIL_PASSWORD,
+  BREVO_USER,
+  BREVO_PASSWORD,
   ADMIN_RECEIVER,
 } = process.env;
