@@ -92,10 +92,15 @@ const products = [
 ];
 const insertProducts = async () => {
   try {
-    await Product.insertMany(products);
-    console.log("products inserted successfully");
+    const existing = await Product.find();
+    if (existing.length === 0) {
+      await Product.insertMany(products);
+      console.log("products inserted successfully");
+    } else {
+      console.log("products already exists, skipping insert");
+    }
   } catch (error) {
-    console.log("failed to insert courses", error.message);
+    console.log("failed to insert products", error.message);
     process.exit(1);
   }
 };

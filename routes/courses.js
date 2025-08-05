@@ -151,8 +151,13 @@ const courses = [
 
 const insertCourses = async () => {
   try {
-    await Course.insertMany(courses);
-    console.log("courses inserted successfully");
+    const existing = await Course.find();
+    if (existing.length === 0) {
+      await Course.insertMany(courses);
+      console.log("courses inserted successfully");
+    } else {
+      console.log("courses already exists, skipping insert");
+    }
   } catch (error) {
     console.error("failed to insert courses", error.message);
     process.exit(1);

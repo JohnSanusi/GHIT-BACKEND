@@ -6,6 +6,8 @@ import users from "./routes/users.js";
 import auth from "./routes/auth.js";
 import likes from "./routes/likes.js";
 import payment from "./routes/payment.js";
+import contact from "./routes/contact.js";
+import repairs from "./routes/repairs.js";
 import connectToDatabase from "./database/mongodb.js";
 import { PORT } from "./config/env.js";
 import errorhandler from "./middleware/errorHandler.js";
@@ -42,6 +44,8 @@ app.use("/api/auth", auth);
 app.use("/api/users", users);
 app.use("/api/likes", likes);
 app.use("/api/payment", payment);
+app.use("/api/contact", contact);
+app.use("/api.repairs", repairs);
 app.use(errorhandler);
 
 app.listen(PORT, async () => {
